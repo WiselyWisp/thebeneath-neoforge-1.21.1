@@ -1,0 +1,11 @@
+{
+  "type": "thebeneath:the_beneath_type",
+  "generator": {
+    "type": "thebeneath:biome_terrain",
+    "biome_source": {
+      "type": "thebeneath:natural_beneath",
+      "lost": "thebeneath:lost",
+      "hills": "thebeneath:shattered_hills"
+    }
+  }
+}

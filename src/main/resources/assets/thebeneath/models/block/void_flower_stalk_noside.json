@@ -1,0 +1,16 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "texture": "thebeneath:block/void_flower_stalk",
+        "inside": "thebeneath:block/void_flower_stalk",
+        "particle": "thebeneath:block/void_flower_stalk"
+    },
+    "elements": [
+        {   "from": [ 4, 4, 4 ],
+            "to": [ 12, 12, 12 ],
+            "faces": {
+                "north": { "texture": "#inside" }
+            }
+        }
+    ]
+}

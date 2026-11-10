@@ -1,0 +1,7 @@
+{
+  "type": "thebeneath:ancient_dig_site",
+  "biomes": "#thebeneath:has_structure/ancient_dig_site",
+  "step": "strongholds",
+  "terrain_adaptation": "none",
+  "spawn_overrides": {}
+}

@@ -1,0 +1,9 @@
+{
+  "target": [
+    "minecraft:shaders/core/rendertype_translucent.fsh",
+    "minecraft:shaders/core/rendertype_solid.fsh"
+  ],
+  "redirect": "thebeneath:veil_probe.glsl",
+  "priority": 2000,
+  "debug": true
+}

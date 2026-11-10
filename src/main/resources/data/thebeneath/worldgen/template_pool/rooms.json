@@ -1,0 +1,51 @@
+{
+  "name": "thebeneath:rooms",
+  "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:hallway_room_loader1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 10,
+            "element": {
+                "location": "thebeneath:pot_room",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 10,
+            "element": {
+                "location": "thebeneath:farm",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 10,
+            "element": {
+                "location": "thebeneath:ritual_room",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "location": "thebeneath:bedroom_hallway",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        }
+    ]
+}

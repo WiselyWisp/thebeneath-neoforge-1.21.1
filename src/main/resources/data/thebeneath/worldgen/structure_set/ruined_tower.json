@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "thebeneath:ruined_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 142135474,
+    "spacing": 4096,
+    "separation": 1,
+    "type": "minecraft:random_spread"
+  }
+}

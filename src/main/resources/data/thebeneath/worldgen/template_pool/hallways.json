@@ -1,0 +1,79 @@
+{
+  "name": "thebeneath:hallways",
+  "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 8,
+            "element": {
+                "location": "thebeneath:hallway1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 6,
+            "element": {
+                "location": "thebeneath:hallway2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:hallway3",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 12,
+            "element": {
+                "location": "thebeneath:hallway_cross",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 8,
+            "element": {
+                "location": "thebeneath:hallway_tsection",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 8,
+            "element": {
+                "location": "thebeneath:hallway_right",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 8,
+            "element": {
+                "location": "thebeneath:hallway_left",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 8,
+            "element": {
+                "location": "thebeneath:hallway_room_loader2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        }
+
+    ]
+}

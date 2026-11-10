@@ -1,0 +1,28 @@
+{
+  "wozzy": {
+    "sounds": [
+      {
+        "name": "thebeneath:music_disc/wozzy",
+        "stream": true
+      }
+    ]
+  },
+  "wanderer_static": {
+    "subtitle": "subtitles.thebeneath.wanderer_static",
+    "sounds": [
+      {
+        "name": "thebeneath:entity/wanderer_static",
+        "volume": 0.65
+      }
+    ]
+  },
+  "echo_footstep": {
+    "subtitle": "subtitles.thebeneath.echo_footstep",
+    "sounds": [
+      {
+        "name": "thebeneath:ambient/echo_footstep",
+        "volume": 0.85
+      }
+    ]
+  }
+}

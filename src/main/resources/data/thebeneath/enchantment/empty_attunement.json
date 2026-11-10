@@ -1,0 +1,22 @@
+{
+  "description": {
+    "translate": "enchantment.thebeneath.empty_attunement"
+  },
+  "supported_items": "#minecraft:enchantable/foot_armor",
+  "primary_items": "#minecraft:enchantable/foot_armor",
+  "weight": 2,
+  "max_level": 1,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 0
+  },
+  "max_cost": {
+    "base": 55,
+    "per_level_above_first": 0
+  },
+  "anvil_cost": 8,
+  "slots": [
+    "feet"
+  ],
+  "effects": {}
+}

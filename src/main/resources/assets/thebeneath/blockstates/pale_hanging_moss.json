@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "tip=false": [
+      { "model": "thebeneath:block/pale_hanging_moss_1", "weight": 4 },
+      { "model": "thebeneath:block/pale_hanging_moss_2", "weight": 3 },
+      { "model": "thebeneath:block/pale_hanging_moss_3", "weight": 3 }
+    ],
+    "tip=true": [
+      { "model": "thebeneath:block/pale_hanging_moss_tip_1", "weight": 4 },
+      { "model": "thebeneath:block/pale_hanging_moss_tip_2", "weight": 3 },
+      { "model": "thebeneath:block/pale_hanging_moss_tip_3", "weight": 3 }
+    ]
+  }
+}

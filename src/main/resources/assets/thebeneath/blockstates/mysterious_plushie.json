@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "thebeneath:block/mysterious_plushie"
+    },
+    "facing=south": {
+      "model": "thebeneath:block/mysterious_plushie"
+    },
+    "facing=east": {
+      "model": "thebeneath:block/mysterious_plushie"
+    },
+    "facing=west": {
+      "model": "thebeneath:block/mysterious_plushie"
+    }
+  }
+}

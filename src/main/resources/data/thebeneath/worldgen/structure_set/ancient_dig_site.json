@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "thebeneath:ancient_dig_site",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 142135437,
+    "type": "minecraft:random_spread",
+    "spacing": 12,
+    "separation": 4
+  }
+}

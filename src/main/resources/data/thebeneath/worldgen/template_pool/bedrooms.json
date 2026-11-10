@@ -1,0 +1,60 @@
+{
+  "name": "thebeneath:bedrooms",
+  "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:bedroom1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:bedroom2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:bedroom3",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:bedroom4",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:bedroom5",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "location": "thebeneath:bedroom6",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        }
+    ]
+}
