@@ -14,6 +14,7 @@ import net.wiselywisp.thebeneath.block.ModBlocks;
 import net.wiselywisp.thebeneath.item.custom.DummyLootItem;
 import net.wiselywisp.thebeneath.item.custom.MysteriousPlushieItem;
 import net.wiselywisp.thebeneath.sound.ModSounds;
+import net.wiselywisp.thebeneath.item.custom.OldNoteItem;
 
 public final class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(TheBeneath.MOD_ID);
@@ -33,11 +34,15 @@ public final class ModItems {
 
     public static final DeferredItem<Item> WOZZY_DISC = ITEMS.register("wozzy_disc", () ->
             new Item(new Item.Properties().jukeboxPlayable(ModSounds.WOZZY_KEY).stacksTo(1)));
+
     public static final DeferredItem<DummyLootItem> EXPLORER_MAP = ITEMS.register("explorer_map", () ->
             new DummyLootItem(new Item.Properties().stacksTo(1),
                     ResourceLocation.fromNamespaceAndPath(TheBeneath.MOD_ID, "map")));
+
     public static final DeferredItem<SpawnEggItem> VOID_WANDERER_SPAWN_EGG = ITEMS.registerItem(
             "void_wanderer_spawn_egg", properties -> new SpawnEggItem(ModEntities.VOID_WANDERER.get(), 0x21152F, 0xB88AFF, properties));
 
+    public static final DeferredItem<OldNoteItem> OLD_NOTE = ITEMS.register("old_note", () ->
+            new OldNoteItem(new Item.Properties().stacksTo(1)));
     private ModItems() {}
 }
