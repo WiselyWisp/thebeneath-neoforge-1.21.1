@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.wiselywisp.thebeneath.TheBeneath;
 import net.wiselywisp.thebeneath.block.ModBlocks;
 import net.wiselywisp.thebeneath.block.entity.custom.SnackerBlockEntity;
+import net.wiselywisp.thebeneath.block.entity.custom.VoidFlowerBulbBlockEntity;
 import net.wiselywisp.thebeneath.block.entity.custom.VoidPlushieBlockEntity;
 
 public final class ModBlockEntities {
@@ -18,5 +19,16 @@ public final class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VoidPlushieBlockEntity>> MYSTERIOUS_PLUSHIE =
             BLOCK_ENTITIES.register("mysterious_plushie", () -> BlockEntityType.Builder.of(
                     VoidPlushieBlockEntity::new, ModBlocks.MYSTERIOUS_PLUSHIE.get()).build(null));
+
+    public static final DeferredHolder<
+            BlockEntityType<?>,
+            BlockEntityType<VoidFlowerBulbBlockEntity>>
+            VOID_FLOWER_BULB = BLOCK_ENTITIES.register(
+            "void_flower_bulb",
+            () -> BlockEntityType.Builder.of(
+                    VoidFlowerBulbBlockEntity::new,
+                    ModBlocks.VOID_FLOWER_BULB.get()
+            ).build(null)
+    );
     private ModBlockEntities() {}
 }

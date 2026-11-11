@@ -1,0 +1,72 @@
+{
+  "format": "NEW_ENTITY",
+  "mode": "QUADS",
+  "bufferSize": "TRANSIENT",
+  "sort": true,
+  "affectsCrumbling": false,
+  "outline": false,
+  "layers": [
+    [
+      {
+        "type": "minecraft:texture",
+        "texture": "%1$s",
+        "blur": false,
+        "mipmap": false
+      },
+      {
+        "type": "veil:shader",
+        "name": "thebeneath:void_flower_bulb"
+      },
+      {
+        "type": "minecraft:transparency",
+        "mode": "translucent"
+      },
+      {
+        "type": "minecraft:depth_test",
+        "mode": "lequal"
+      },
+      {
+        "type": "minecraft:cull",
+        "face": "none"
+      },
+      {
+        "type": "minecraft:write_mask",
+        "color": false,
+        "depth": false
+      }
+    ],
+    [
+      {
+        "type": "minecraft:texture",
+        "texture": "%1$s",
+        "blur": false,
+        "mipmap": false
+      },
+      {
+        "type": "veil:shader",
+        "name": "thebeneath:void_flower_bulb"
+      },
+      {
+        "type": "minecraft:transparency",
+        "mode": "translucent"
+      },
+      {
+        "type": "minecraft:depth_test",
+        "mode": "lequal"
+      },
+      {
+        "type": "minecraft:cull",
+        "face": "none"
+      },
+      {
+        "type": "minecraft:write_mask",
+        "color": true,
+        "depth": false
+      },
+      {
+        "type": "minecraft:output",
+        "framebuffer": "veil:bloom"
+      }
+    ]
+  ]
+}

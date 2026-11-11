@@ -20,9 +20,12 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.wiselywisp.thebeneath.block.ModBlocks;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.wiselywisp.thebeneath.block.entity.custom.VoidFlowerBulbBlockEntity;
 
 
-public class VoidFlowerBulb extends Block {
+public class VoidFlowerBulb extends Block implements EntityBlock {
     public static final MapCodec<VoidFlowerBulb> CODEC = simpleCodec(VoidFlowerBulb::new);
     public static final int MAX_AGE = 5;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
@@ -161,5 +164,9 @@ public class VoidFlowerBulb extends Block {
     }
     @Override protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
         if (!level.isClientSide) level.destroyBlock(hit.getBlockPos(), true, projectile);
+    }
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new VoidFlowerBulbBlockEntity(pos, state);
     }
 }
