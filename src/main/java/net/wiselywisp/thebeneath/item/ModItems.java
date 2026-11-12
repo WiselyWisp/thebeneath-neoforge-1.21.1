@@ -31,6 +31,7 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> ANCIENT_LIGHT_ORB = ITEMS.registerSimpleBlockItem(ModBlocks.ANCIENT_LIGHT_ORB);
     public static final DeferredItem<BlockItem> STABLE_VOID_CORE = ITEMS.registerSimpleBlockItem(ModBlocks.STABLE_VOID_CORE);
     public static final DeferredItem<BlockItem> BEDROCK_REMOVER = ITEMS.registerSimpleBlockItem(ModBlocks.BEDROCK_REMOVER);
+    public static final DeferredItem<BlockItem> BRITTLE_BEDROCK = ITEMS.registerSimpleBlockItem(ModBlocks.BRITTLE_BEDROCK);
 
     public static final DeferredItem<Item> WOZZY_DISC = ITEMS.register("wozzy_disc", () ->
             new Item(new Item.Properties().jukeboxPlayable(ModSounds.WOZZY_KEY).stacksTo(1)));

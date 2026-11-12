@@ -14,15 +14,26 @@ public final class NaturalBeneathBiomeSource extends BiomeSource {
     public static final MapCodec<NaturalBeneathBiomeSource> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Biome.CODEC.fieldOf("lost").forGetter(source -> source.lost),
-                    Biome.CODEC.fieldOf("hills").forGetter(source -> source.hills)
+                    Biome.CODEC.fieldOf("hills").forGetter(source -> source.hills),
+                    Biome.CODEC.fieldOf("unstable").forGetter(source -> source.unstable),
+                    Biome.CODEC.fieldOf("shrubland").forGetter(source -> source.shrubland)
             ).apply(instance, NaturalBeneathBiomeSource::new));
 
     private final Holder<Biome> lost;
     private final Holder<Biome> hills;
+    private final Holder<Biome> unstable;
+    private final Holder<Biome> shrubland;
 
-    public NaturalBeneathBiomeSource(Holder<Biome> lost, Holder<Biome> hills) {
+    public NaturalBeneathBiomeSource(
+            Holder<Biome> lost,
+            Holder<Biome> hills,
+            Holder<Biome> unstable,
+            Holder<Biome> shrubland) {
+
         this.lost = lost;
         this.hills = hills;
+        this.unstable = unstable;
+        this.shrubland = shrubland;
     }
 
     @Override
@@ -32,7 +43,7 @@ public final class NaturalBeneathBiomeSource extends BiomeSource {
 
     @Override
     protected Stream<Holder<Biome>> collectPossibleBiomes() {
-        return Stream.of(lost, hills);
+        return Stream.of(lost, hills, unstable, shrubland);
     }
 
     private static double hash(int x, int z) {
@@ -64,6 +75,27 @@ public final class NaturalBeneathBiomeSource extends BiomeSource {
         double z = quartZ / 192.0;
         double value = valueNoise(x, z) * 0.75
                 + valueNoise(x * 2.25 + 37.1, z * 2.25 - 18.4) * 0.25;
-        return value >= 0.0 ? hills : lost;
+        if (value >= 0.0) {
+            return hills;
+        }
+
+        double unstableNoise = valueNoise(
+                x * 1.3 + 123.4,
+                z * 1.3 - 51.7
+        );
+
+        if (unstableNoise > 0.3) {
+            return unstable;
+        }
+
+        double shrubNoise = valueNoise(
+                x * 3.0 - 64.5,
+                z * 3.0 + 109.2
+        );
+        if (shrubNoise > 0.32) {
+            return shrubland;
+        }
+
+        return lost;
     }
 }

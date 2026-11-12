@@ -1,17 +1,14 @@
 package net.wiselywisp.thebeneath.block;
 
 import net.minecraft.world.level.block.Block;
-import net.wiselywisp.thebeneath.block.custom.VoidPlushieBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.wiselywisp.thebeneath.block.custom.*;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.wiselywisp.thebeneath.fluid.ModFluids;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.wiselywisp.thebeneath.TheBeneath;
-import net.wiselywisp.thebeneath.block.custom.Ancient_Light_Orb;
-import net.wiselywisp.thebeneath.block.custom.SnackerBlock;
-import net.wiselywisp.thebeneath.block.custom.VoidFlower;
-import net.wiselywisp.thebeneath.block.custom.VoidFlowerBulb;
 
 public final class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(TheBeneath.MOD_ID);
@@ -46,4 +43,17 @@ public final class ModBlocks {
     public static final DeferredBlock<Ancient_Light_Orb> STABLE_VOID_CORE = BLOCKS.registerBlock(
             "stable_void_core", Ancient_Light_Orb::new,
             BlockBehaviour.Properties.of().strength(2, 3600000.0F).lightLevel(s -> 8));
+
+
+    public static final DeferredBlock<BrittleBedrockBlock> BRITTLE_BEDROCK =
+            BLOCKS.register("brittle_bedrock",
+                    () -> new BrittleBedrockBlock(
+                            BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).noLootTable()));
+
+    public static final DeferredBlock<ShrublandGrassBlock> SHRUBLAND_GRASS = BLOCKS.register(
+            "shrubland_grass",
+            () -> new ShrublandGrassBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)
+            )
+    );
 }

@@ -5,7 +5,9 @@
     "biome_source": {
       "type": "thebeneath:natural_beneath",
       "lost": "thebeneath:lost",
-      "hills": "thebeneath:shattered_hills"
+      "hills": "thebeneath:shattered_hills",
+      "unstable": "thebeneath:unstable_plains",
+      "shrubland": "thebeneath:shrubland"
     }
   }
 }

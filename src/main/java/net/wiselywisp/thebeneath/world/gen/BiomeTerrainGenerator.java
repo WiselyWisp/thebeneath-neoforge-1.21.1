@@ -21,6 +21,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.server.level.WorldGenRegion;
+import net.wiselywisp.thebeneath.block.ModBlocks;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -34,13 +35,65 @@ public final class BiomeTerrainGenerator extends ChunkGenerator {
 
     @Override protected MapCodec<? extends ChunkGenerator> codec() { return CODEC; }
 
-    private boolean isLost(int x, int z, RandomState random) {
-        Holder<Biome> biome = biomeSource.getNoiseBiome(QuartPos.fromBlock(x), QuartPos.fromBlock(64), QuartPos.fromBlock(z), random.sampler());
-        return biome.unwrapKey().map(key -> key.location().equals(ResourceLocation.fromNamespaceAndPath("thebeneath", "lost"))).orElse(false);
+    private boolean isFlat(int x, int z, RandomState random) {
+
+        Holder<Biome> biome = biomeSource.getNoiseBiome(
+                QuartPos.fromBlock(x),
+                QuartPos.fromBlock(64),
+                QuartPos.fromBlock(z),
+                random.sampler()
+        );
+
+        return biome.unwrapKey().map(key -> {
+            ResourceLocation location = key.location();
+
+            return location.equals(
+                    ResourceLocation.fromNamespaceAndPath(
+                            "thebeneath", "lost"
+                    )
+            ) || location.equals(
+                    ResourceLocation.fromNamespaceAndPath(
+                            "thebeneath", "unstable_plains"
+                    )
+            );
+        }).orElse(false);
+    }
+
+    private boolean isShrubland(
+            int x, int z, RandomState random) {
+
+        Holder<Biome> biome = biomeSource.getNoiseBiome(
+                QuartPos.fromBlock(x),
+                QuartPos.fromBlock(64),
+                QuartPos.fromBlock(z),
+                random.sampler()
+        );
+
+        return biome.unwrapKey().map(key ->
+                key.location().equals(
+                        ResourceLocation.fromNamespaceAndPath(
+                                "thebeneath", "shrubland"
+                        )
+                )
+        ).orElse(false);
     }
 
     private int top(int x, int z, RandomState random) {
-        if (isLost(x, z, random)) return 40;
+        if (isFlat(x, z, random)) return 40;
+
+        if (isShrubland(x, z, random)) {
+
+            double broad =
+                    Math.sin(x * 0.025) * 2.5
+                            + Math.cos(z * 0.028) * 2.0;
+
+            double detail =
+                    Math.sin(x * 0.065 + z * 0.035) * 0.8;
+
+            return Math.max(40, Math.min(49,
+                    (int) Math.round(43 + broad + detail)
+            ));
+        }
 
         double broad = Math.sin(x * 0.008) * Math.cos(z * 0.009) * 15.0;
         double detail = Math.sin(x * 0.026 + z * 0.013) * 4.0;
@@ -53,7 +106,7 @@ public final class BiomeTerrainGenerator extends ChunkGenerator {
             for (int dz = -radius; dz <= radius; dz += step) {
                 double squared = (double) dx * dx + (double) dz * dz;
                 if (squared >= nearestLostSquared || squared > (double) radius * radius) continue;
-                if (isLost(x + dx, z + dz, random)) nearestLostSquared = squared;
+                if (isFlat(x + dx, z + dz, random)) nearestLostSquared = squared;
             }
         }
         double distance = Math.sqrt(nearestLostSquared);
@@ -62,10 +115,28 @@ public final class BiomeTerrainGenerator extends ChunkGenerator {
         return Math.max(24, Math.min(67, (int) Math.round(40.0 + (terrain - 40.0) * blend)));
     }
 
-    private BlockState terrainBlock(int y, int height, boolean lost) {
-        if (y < 0 || y >= height) return Blocks.AIR.defaultBlockState();
-        return lost ? Blocks.BEDROCK.defaultBlockState()
-                : (y == height - 1 ? Blocks.BEDROCK.defaultBlockState() : Blocks.BEDROCK.defaultBlockState());
+    private BlockState terrainBlock(
+            int y, int height, boolean shrubland) {
+
+        if (y < 0 || y >= height) {
+            return Blocks.AIR.defaultBlockState();
+        }
+
+        if (shrubland) {
+
+            if (y == height - 1) {
+                return ModBlocks.SHRUBLAND_GRASS.get()
+                        .defaultBlockState();
+            }
+
+
+            if (y >= height - 4) {
+                return Blocks.DIRT.defaultBlockState();
+            }
+        }
+
+
+        return Blocks.BEDROCK.defaultBlockState();
     }
 
     @Override public CompletableFuture<ChunkAccess> fillFromNoise(Blender blender, RandomState random, StructureManager structures, ChunkAccess chunk) {
@@ -73,10 +144,15 @@ public final class BiomeTerrainGenerator extends ChunkGenerator {
         int min = Math.max(0, chunk.getMinBuildHeight());
         for (int lx = 0; lx < 16; lx++) for (int lz = 0; lz < 16; lz++) {
             int x = chunk.getPos().getMinBlockX() + lx, z = chunk.getPos().getMinBlockZ() + lz;
-            boolean lost = isLost(x, z, random);
-            int height = lost ? 40 : top(x, z, random);
+            boolean shrubland = isShrubland(x, z, random);
+            int height = top(x, z, random);
+
             for (int y = min; y < height; y++) {
-                chunk.setBlockState(pos.set(x, y, z), terrainBlock(y, height, lost), false);
+                chunk.setBlockState(
+                        pos.set(x, y, z),
+                        terrainBlock(y, height, shrubland),
+                        false
+                );
             }
         }
         return CompletableFuture.completedFuture(chunk);
@@ -86,14 +162,30 @@ public final class BiomeTerrainGenerator extends ChunkGenerator {
         return top(x,z,random);
     }
 
-    @Override public NoiseColumn getBaseColumn(int x, int z, LevelHeightAccessor level, RandomState random) {
+    @Override
+    public NoiseColumn getBaseColumn(
+            int x,
+            int z,
+            LevelHeightAccessor level,
+            RandomState random) {
+
         BlockState[] column = new BlockState[level.getHeight()];
-        boolean lost = isLost(x, z, random);
-        int height = lost ? 40 : top(x, z, random);
+
+        boolean shrubland = isShrubland(x, z, random);
+        int height = top(x, z, random);
+
         for (int i = 0; i < column.length; i++) {
-            column[i] = terrainBlock(level.getMinBuildHeight() + i, height, lost);
+            column[i] = terrainBlock(
+                    level.getMinBuildHeight() + i,
+                    height,
+                    shrubland
+            );
         }
-        return new NoiseColumn(level.getMinBuildHeight(), column);
+
+        return new NoiseColumn(
+                level.getMinBuildHeight(),
+                column
+        );
     }
 
     @Override public void buildSurface(WorldGenRegion level,StructureManager structures,RandomState random,ChunkAccess chunk) {}

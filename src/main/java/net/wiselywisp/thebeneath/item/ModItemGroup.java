@@ -26,6 +26,7 @@ public final class ModItemGroup {
                         entries.accept(ModBlocks.VOID_FLOWER_STALK.get());
                         entries.accept(ModBlocks.CRACKED_BEDROCK.get());
                         entries.accept(ModItems.OLD_NOTE.get());
+                        entries.accept(ModBlocks.BRITTLE_BEDROCK.get());
                     }).build());
     private ModItemGroup() {}
 }
