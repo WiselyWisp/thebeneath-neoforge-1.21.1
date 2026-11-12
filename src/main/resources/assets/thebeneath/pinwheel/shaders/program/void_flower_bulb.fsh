@@ -23,7 +23,7 @@ void main() {
 
     vec3 glowColor = vec3(0.52, 0.86, 1.0);
 
-    float bloomIntensity = 0.2;
+    float bloomIntensity = 2;
 
     fragColor = vec4(
     glowColor * bloomIntensity * emission,

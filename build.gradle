@@ -132,8 +132,8 @@ dependencies {
         exclude group: 'me.fallenbreath'
     }) {
         version {
-            strictly '[4.2.0,5.0.0)'
-            prefer '4.2.0'
+            strictly '[4.5.2,5.0.0)'
+            prefer '4.5.2'
         }
     }
 }
