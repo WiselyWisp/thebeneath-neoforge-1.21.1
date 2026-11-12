@@ -24,12 +24,12 @@ public final class ShrublandClient {
         event.register(
                 (state, level, pos, tintIndex) -> {
 
-                    // Tint grass surfaces green.
+
                     if (tintIndex == 0) {
                         return 0x7EB358;
                     }
 
-                    // Do not tint other texture layers.
+
                     return -1;
                 },
 
